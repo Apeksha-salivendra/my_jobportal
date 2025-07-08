@@ -1,11 +1,24 @@
 import express from "express";
 const router = express.Router();
 
-// Import the controller function
-import { getAllJobs } from "../controllers/job.controller.js";
+import {
+  getAllJobs,
+  postJob,
+  getJobById,
+  getAdminJobs
+} from "../controllers/job.controller.js";
 
-// Route: GET /api/v1/job
+// Route to get all jobs
 router.get("/", getAllJobs);
 
-// Export the router
+// Route to get all jobs posted by an admin
+router.get("/admin", getAdminJobs);
+
+// Route to get one job by ID
+router.get("/:id", getJobById);
+
+// Route to post a new job
+router.post("/create", postJob);
+
 export default router;
+
